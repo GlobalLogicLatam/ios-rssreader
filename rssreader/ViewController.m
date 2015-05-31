@@ -7,10 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "ItemDAO.h"
+#import "UIImageView+AFNetworking.h"
+#import "Item.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *tableData;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -18,9 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Initialize table data
-    self.tableData = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    [self fetchItems];
 
 }
 
@@ -42,8 +45,32 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    cell.textLabel.text = [self.tableData objectAtIndex:indexPath.row];
+    
+    Item *item = [[Item alloc] init];
+    item = [self.tableData objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.title;
+    if (item.imageLink) {
+        NSURL *imgUrl = [[NSURL alloc] initWithString:item.imageLink];
+        [cell.imageView setImageWithURL:imgUrl];
+    }
     return cell;
+}
+
+- (void)fetchItems{
+    ItemDAO *itemDAO = [[ItemDAO alloc] init];
+    [itemDAO getAllItems:^(NSArray *items, NSError *serviceError) {
+        if (serviceError) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Items"
+                                                                message:[serviceError localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }else{
+            self.tableData = items;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 @end
