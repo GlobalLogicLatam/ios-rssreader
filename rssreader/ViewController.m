@@ -10,6 +10,7 @@
 #import "ItemDAO.h"
 #import "UIImageView+AFNetworking.h"
 #import "Item.h"
+#import "ItemDetailViewController.h"
 
 @interface ViewController ()
 
@@ -32,6 +33,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)fetchItems{
+    ItemDAO *itemDAO = [[ItemDAO alloc] init];
+    [itemDAO getAllItems:^(NSArray *items, NSError *serviceError) {
+        if (serviceError) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Items"
+                                                                message:[serviceError localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }else{
+            self.tableData = items;
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+#pragma TableView delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tableData.count;
@@ -56,21 +75,22 @@
     return cell;
 }
 
-- (void)fetchItems{
-    ItemDAO *itemDAO = [[ItemDAO alloc] init];
-    [itemDAO getAllItems:^(NSArray *items, NSError *serviceError) {
-        if (serviceError) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Items"
-                                                                message:[serviceError localizedDescription]
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }else{
-            self.tableData = items;
-            [self.tableView reloadData];
-        }
-    }];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showItemDetail" sender:self];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"showItemDetail"])
+    {
+        NSIndexPath *cellIndexPath = [self.tableView indexPathForSelectedRow];
+        ItemDetailViewController *itemDetailVC = segue.destinationViewController;
+        itemDetailVC.item = [self.tableData objectAtIndex:cellIndexPath.row];
+    }
+}
+
+
 
 @end
