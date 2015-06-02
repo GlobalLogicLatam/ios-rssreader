@@ -18,10 +18,9 @@ NSString *const kServiceUrl = @"http://club.globallogic.com.ar/feed/";
     NSURL *url = [NSURL URLWithString:path];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
     [manager.requestSerializer setTimeoutInterval:15.0];
-    //Setting header
-    // Using AFXMLParserResponseSerializer only for xml request
     manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/rss+xml"];
+    [manager.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
     [manager GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.data = operation.responseData;

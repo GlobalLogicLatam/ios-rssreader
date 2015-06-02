@@ -27,13 +27,6 @@
     [super viewDidLoad];
     // Initialize table data
     [self fetchItems];
-    
-    self.tableView.contentOffset = CGPointMake(0, 0);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)fetchItems{
@@ -78,10 +71,6 @@
         NSURL *imgUrl = [[NSURL alloc] initWithString:item.imageLink];
         [cell.articleImageView setImageWithURL:imgUrl];
     }
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
