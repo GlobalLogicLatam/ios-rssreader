@@ -9,7 +9,7 @@
 #import "ItemService.h"
 #import "AFNetworking.h"
 
-NSString *const kServiveUrl = @"http://club.globallogic.com.ar/feed/";
+NSString *const kServiceUrl = @"http://club.globallogic.com.ar/feed/";
 
 @implementation ItemService
 
@@ -34,7 +34,7 @@ NSString *const kServiveUrl = @"http://club.globallogic.com.ar/feed/";
 - (void)fetchItemsCompletion:(void(^)(NSData * result, NSError * error))completion :(void(^)(ItemService * serv, NSError * error)) failure{
     self.completion = completion;
     self.failure = failure;
-    [self getRequest:kServiveUrl];
+    [self getRequest:kServiceUrl];
 }
 
 @end

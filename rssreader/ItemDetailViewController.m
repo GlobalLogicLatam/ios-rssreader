@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     self.titleLabel.text = self.item.title;
-    [self.contentWebView loadHTMLString:[NSString stringWithFormat:self.item.content] baseURL:nil];
+    [self.contentWebView loadHTMLString:self.item.content baseURL:nil];
 }
 
 
