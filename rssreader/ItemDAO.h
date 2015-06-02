@@ -11,7 +11,6 @@
 @interface ItemDAO : NSObject
 
 @property (copy, nonatomic) void(^ completion)(NSArray * result, NSError * error);
-@property (copy, nonatomic) void(^ failure)(ItemDAO * serv, NSError * error);
 
 - (void)getAllItems:(void (^)(NSArray *items, NSError *serviceError))completion;
 

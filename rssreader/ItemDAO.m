@@ -29,13 +29,11 @@ static NSString * const kImageElementName = @"media:thumbnail";
 
 - (void)getAllItems:(void (^)(NSArray *items, NSError *serviceError))completion{
     
-    ItemService *webService = [[ItemService alloc]init];
+    ItemService *webService = [[ItemService alloc] init];
     
     [webService fetchItemsCompletion:^(NSData *result, NSError *error) {
         [self initXMLParserWithData:result];
-        completion(self.itemsDAO, nil);
-    } :^(ItemService *serv, NSError *error) {
-        self.failure(self, error);
+        completion(self.itemsDAO, error);
     }];
 }
 

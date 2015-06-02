@@ -17,6 +17,7 @@ NSString *const kServiceUrl = @"http://club.globallogic.com.ar/feed/";
 {
     NSURL *url = [NSURL URLWithString:path];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
+    [manager.requestSerializer setTimeoutInterval:15.0];
     //Setting header
     // Using AFXMLParserResponseSerializer only for xml request
     manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
@@ -26,14 +27,13 @@ NSString *const kServiceUrl = @"http://club.globallogic.com.ar/feed/";
         self.data = operation.responseData;
         self.completion(self.data, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        self.failure(self, error);
+        self.completion(nil, error);
     }];
     return self.data;
 }
 
-- (void)fetchItemsCompletion:(void(^)(NSData * result, NSError * error))completion :(void(^)(ItemService * serv, NSError * error)) failure{
+- (void)fetchItemsCompletion:(void(^)(NSData * result, NSError * error))completion {
     self.completion = completion;
-    self.failure = failure;
     [self getRequest:kServiceUrl];
 }
 

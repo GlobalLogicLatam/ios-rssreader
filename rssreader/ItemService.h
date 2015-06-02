@@ -13,8 +13,7 @@
 @property (strong, nonatomic) NSData *data;
 @property (strong, nonatomic) NSString *url;
 @property (copy, nonatomic) void(^ completion)(NSData * result, NSError * error);
-@property (copy, nonatomic) void(^ failure)(ItemService * serv, NSError * error);
 
-- (void)fetchItemsCompletion:(void(^)(NSData * result, NSError * error))completion :(void(^)(ItemService * serv, NSError * error)) failure;
+- (void)fetchItemsCompletion:(void(^)(NSData * result, NSError * error))completion;
 
 @end
