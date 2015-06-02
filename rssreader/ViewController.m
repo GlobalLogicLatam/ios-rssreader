@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "Item.h"
 #import "ItemDetailViewController.h"
+#import "CustomTVC.h"
 #import <MBProgressHUD.h>
 
 @interface ViewController ()
@@ -27,8 +28,7 @@
     // Initialize table data
     [self fetchItems];
     
-    self.tableView.tableFooterView = [UIView new];
-
+    self.tableView.contentOffset = CGPointMake(0, 0);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,22 +62,22 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    static NSString *simpleTableIdentifier = @"customCellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(CustomTVC *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+
     Item *item = [[Item alloc] init];
     item = [self.tableData objectAtIndex:indexPath.row];
-    cell.textLabel.text = item.title;
+    cell.titleLabel.text = item.title;
     if (item.imageLink) {
         NSURL *imgUrl = [[NSURL alloc] initWithString:item.imageLink];
-        [cell.imageView setImageWithURL:imgUrl];
+        [cell.articleImageView setImageWithURL:imgUrl];
     }
-    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

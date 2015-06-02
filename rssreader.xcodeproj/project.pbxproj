@@ -19,6 +19,7 @@
 		D4D11B411B1A31F1003F6D5F /* ItemService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D11B401B1A31F1003F6D5F /* ItemService.m */; };
 		D4D11B441B1A3648003F6D5F /* ItemDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D11B431B1A3648003F6D5F /* ItemDAO.m */; };
 		D4D11B471B1BC482003F6D5F /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D11B461B1BC482003F6D5F /* ItemDetailViewController.m */; };
+		D4D11B541B1E1A20003F6D5F /* CustomTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D11B531B1E1A20003F6D5F /* CustomTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		D4D11B431B1A3648003F6D5F /* ItemDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDAO.m; sourceTree = "<group>"; };
 		D4D11B451B1BC482003F6D5F /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
 		D4D11B461B1BC482003F6D5F /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
+		D4D11B521B1E1A20003F6D5F /* CustomTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTVC.h; sourceTree = "<group>"; };
+		D4D11B531B1E1A20003F6D5F /* CustomTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTVC.m; sourceTree = "<group>"; };
 		FC99DD871F4B6DC54E080935 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +120,7 @@
 		D4A4C8DF1B14E33B00E1FC39 /* rssreader */ = {
 			isa = PBXGroup;
 			children = (
+				D4D11B511B1E19FE003F6D5F /* Views */,
 				D4D11B3D1B1A31A7003F6D5F /* WebServices */,
 				D4D11B3C1B1A3098003F6D5F /* DAOs */,
 				D4D11B371B1A2F28003F6D5F /* Models */,
@@ -185,6 +189,15 @@
 				D4D11B401B1A31F1003F6D5F /* ItemService.m */,
 			);
 			name = WebServices;
+			sourceTree = "<group>";
+		};
+		D4D11B511B1E19FE003F6D5F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4D11B521B1E1A20003F6D5F /* CustomTVC.h */,
+				D4D11B531B1E1A20003F6D5F /* CustomTVC.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +341,7 @@
 				D4A4C8E91B14E33B00E1FC39 /* ViewController.m in Sources */,
 				D4D11B441B1A3648003F6D5F /* ItemDAO.m in Sources */,
 				D4A4C8E61B14E33B00E1FC39 /* AppDelegate.m in Sources */,
+				D4D11B541B1E1A20003F6D5F /* CustomTVC.m in Sources */,
 				D4A4C8E31B14E33B00E1FC39 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
