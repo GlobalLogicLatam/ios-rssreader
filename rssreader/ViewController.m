@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "Item.h"
 #import "ItemDetailViewController.h"
+#import <MBProgressHUD.h>
 
 @interface ViewController ()
 
@@ -25,6 +26,8 @@
     [super viewDidLoad];
     // Initialize table data
     [self fetchItems];
+    
+    self.tableView.tableFooterView = [UIView new];
 
 }
 
@@ -34,8 +37,10 @@
 }
 
 - (void)fetchItems{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     ItemDAO *itemDAO = [[ItemDAO alloc] init];
     [itemDAO getAllItems:^(NSArray *items, NSError *serviceError) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (serviceError) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Items"
                                                                 message:[serviceError localizedDescription]
