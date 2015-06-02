@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UH6-cL-J2Z">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -43,25 +44,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRC-52-HqG">
-                                                    <rect key="frame" x="78" y="19" width="222" height="21"/>
+                                                    <rect key="frame" x="79" y="19" width="221" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ACs-ed-uTV">
-                                                    <rect key="frame" x="20" y="5" width="50" height="50"/>
+                                                    <rect key="frame" x="20" y="4" width="51" height="51"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="EgE-GI-nFQ"/>
-                                                        <constraint firstAttribute="width" constant="50" id="T10-MI-yzb"/>
+                                                        <constraint firstAttribute="width" secondItem="ACs-ed-uTV" secondAttribute="height" id="aMn-pc-SP0"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerYWithinMargins" secondItem="ACs-ed-uTV" secondAttribute="centerYWithinMargins" id="9oB-Ca-Rby"/>
                                                 <constraint firstAttribute="trailing" secondItem="LRC-52-HqG" secondAttribute="trailing" constant="20" symbolic="YES" id="BXN-F9-uwU"/>
                                                 <constraint firstAttribute="centerYWithinMargins" secondItem="LRC-52-HqG" secondAttribute="centerYWithinMargins" id="LY9-4o-txl"/>
+                                                <constraint firstAttribute="bottom" secondItem="ACs-ed-uTV" secondAttribute="bottom" constant="4" id="U3S-Y5-WCr"/>
                                                 <constraint firstItem="LRC-52-HqG" firstAttribute="leading" secondItem="ACs-ed-uTV" secondAttribute="trailing" constant="8" symbolic="YES" id="VHG-fg-KKr"/>
                                                 <constraint firstItem="ACs-ed-uTV" firstAttribute="leading" secondItem="HoT-ec-THL" secondAttribute="leading" constant="20" symbolic="YES" id="kon-OB-hpr"/>
+                                                <constraint firstItem="ACs-ed-uTV" firstAttribute="top" secondItem="HoT-ec-THL" secondAttribute="top" constant="4" id="qRq-gG-Jqr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
